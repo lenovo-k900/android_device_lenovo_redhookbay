@@ -18,6 +18,7 @@ DEVICE_BASE_BOOT_IMAGE := $(LOCAL_PATH)/blobs/boot.img
 DEVICE_BASE_RECOVERY_IMAGE := $(LOCAL_PATH)/blobs/recovery.img
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/intel-boot-tools/boot.mk
 
+BOARD_HAS_NO_FB2PNG := true
 
 # Recovery configuration global
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
