@@ -5,13 +5,11 @@ $(call inherit-product, vendor/cm/config/gsm.mk)
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
  
 ## Inherit device configuration
-$(call inherit-product, device/lenovo/redhookbay/redhookbay.mk)
+$(call inherit-product, device/lenovo/redhookbay/full_redhookbay.mk)
 
+# Release name
+PRODUCT_RELEASE_NAME := Razr I
 PRODUCT_NAME := cm_redhookbay
-
-## Release name
-PRODUCT_RELEASE_NAME := K900
-PRODUCT_VERSION_DEVICE_SPECIFIC :=
 
 ## Boot animation
 TARGET_BOOTANIMATION_NAME := vertical-1080x1920
