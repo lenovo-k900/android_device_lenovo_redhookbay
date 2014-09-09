@@ -1,4 +1,4 @@
-# qubex
+# (c) qubex, xxx-man, kraminski
 
 import /init.watchdog.rc
 
@@ -13,15 +13,26 @@ on init
 
     symlink /system/etc /etc
 
-    mkdir /sdcard
-    mkdir /system
-    mkdir /data
     mkdir /cache
-   
-    mount ext4 /dev/block/mmcblk0p10 /temp_data
+	mkdir /logs
+	mkdir /system
+	mkdir /data
+	mkdir /sdcard
+    mkdir /sd-ext
+	mkdir /internal_sd
+    mkdir /external_sd
+    mkdir /datadata
+    mkdir /emmc
+    mkdir /tmp
+    mount /tmp /tmp tmpfs
+	
+	chown root shell /tmp
+    chmod 0775 /tmp
+	
+	mount ext4 /dev/block/mmcblk0p10 /temp_data
     mkdir /temp_data/recovery_tmp 0775 root shell
     symlink /temp_data/recovery_tmp /tmp
-
+        
 on boot
     ifup lo
     hostname localhost
@@ -64,3 +75,4 @@ on property:service.adb.root=1
     write /sys/class/android_usb/android0/enable 0
     restart adbd
     write /sys/class/android_usb/android0/enable 1
+
