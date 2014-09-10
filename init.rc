@@ -15,15 +15,10 @@ on init
     symlink /system/etc /etc
 
     mkdir /cache
-	mkdir /logs
-	mkdir /system
-	mkdir /data
-	mkdir /sdcard
-    mkdir /sd-ext
-	mkdir /internal_sd
-    mkdir /external_sd
-    mkdir /datadata
-    mkdir /emmc
+    mkdir /logs
+    mkdir /system
+    mkdir /data
+    mkdir /sdcard
     mkdir /tmp
     mount /tmp /tmp tmpfs
 	
@@ -76,4 +71,3 @@ on property:service.adb.root=1
     write /sys/class/android_usb/android0/enable 0
     restart adbd
     write /sys/class/android_usb/android0/enable 1
-
