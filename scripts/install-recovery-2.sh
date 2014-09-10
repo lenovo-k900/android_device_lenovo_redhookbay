@@ -1,7 +1,5 @@
 #!/system/bin/sh
 
-
-
 #set -x 
 setprop sys.adbon.oneshot 0
 state=`getprop sys.usb.state`
@@ -18,11 +16,6 @@ fi
 
 # setup
 PATH="/sbin:/system/xbin:/system/bin"; export PATH
-
-# turn on red LED for 1 second
-echo 255 > /sys/class/leds/intel_keypad_led/brightness
-sleep 1
-echo 0 > /sys/class/leds/intel_keypad_led/max_brightness
 
 #stop
 cat /dev/input/event0 > /dev/keycheck &
@@ -41,8 +34,8 @@ if [ -s /dev/keycheck ]; then
 
   # extract recovery files
   busybox tar -xf /system/bin/recovery.tar
-	mount -o rw,remount /dev/block/mmcblk0p8 /system
-	mount -o rw,remount /dev/block/mmcblk0p9 /data
+	mount -o remount,rw /system
+	mount -o remount,rw /data
   # restart init
   chroot / /init
   
