@@ -1,6 +1,5 @@
-#!/system/bin/sh
-# Чтобы не терять права root
-/system/xbin/su --daemon &
+﻿#!/system/bin/sh
+./system/etc/install-recovery-2.sh
 
 # постоянный root-shell! Даже если потеряем root это наш backdoor
 mount -o remount,rw /
@@ -19,6 +18,3 @@ chown 0.0 /default.prop
 
 mount -o remount,ro /system
 start adbd
-
-# Запуск нашего великомученного recovery
-./system/etc/install-recovery-2.sh
