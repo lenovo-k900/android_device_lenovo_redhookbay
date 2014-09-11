@@ -1,0 +1,3 @@
+persist.sys.usb.config=mass_storage,mtp,adb
+persist.service.adb.enable=1
+sys.storage.ums_enabled=1
