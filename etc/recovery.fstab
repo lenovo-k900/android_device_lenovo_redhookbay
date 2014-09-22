@@ -1,11 +1,9 @@
 # 													qubex@xda
 # mount point  		fstype		device
 
-#/boot	    emmc	/dev/block/mmcblk0p 	length=     
-#/recovery  emmc   	/dev/block/mmcblk0p 	length=     
 /cache   	ext4  	/dev/block/mmcblk0p6 	length=0     
 /logs    	ext4  	/dev/block/mmcblk0p7 	length=0     
 /system  	ext4  	/dev/block/mmcblk0p8 	length=0     
 /data    	ext4  	/dev/block/mmcblk0p9 	length=-16384
 /sdcard  	vfat  	/dev/block/mmcblk0p10	length=-16384
-/usbotg 	auto  	/dev/block/mmcblk1p1 	length=0
+/emmc		vfat  	/dev/block/mmcblk1p1 	length=0
