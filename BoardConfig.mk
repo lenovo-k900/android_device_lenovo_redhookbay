@@ -30,13 +30,15 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/init.rc
 RECOVERY_SDCARD_ON_DATA := true
 # TWRP recovery config
-TW_INCLUDE_INJECTTWRP := true
+TW_INCLUDE_INJECTTWRP := false
 TWRP_EVENT_LOGGING := false
 TW_INTERNAL_STORAGE_PATH := "/usbotg"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "usbotg"
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
-TWHAVE_SELINUX := true
+TWHAVE_SELINUX := false
+TW_MAX_BRIGHTNESS := 255
+TW_BRIGHTNESS_PATH := /sys/class/backlight/psb-bl/brightness
 
 # This is deprecated and will be dropped
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/blobs/kernel
