@@ -1,8 +1,8 @@
 # 													qubex@xda
 # mount point  		fstype		device
 
-/factory 	ext4  	/dev/block/mmcblk0p3 	length=0
-/spare   	ext4  	/dev/block/mmcblk0p4 	length=0
+#/factory 	ext4  	/dev/block/mmcblk0p3 	length=0
+#/spare   	ext4  	/dev/block/mmcblk0p4 	length=0
 /config  	ext4  	/dev/block/mmcblk0p5 	length=0
 /cache   	ext4  	/dev/block/mmcblk0p6 	length=0
 /logs    	ext4  	/dev/block/mmcblk0p7 	length=0
