@@ -6,29 +6,31 @@ on early-init
     start ueventd
 
 on init
-    export PATH /sbin:/system/bin
+    export PATH /sbin
     export LD_LIBRARY_PATH .:/sbin
     export ANDROID_ROOT /system
     export ANDROID_DATA /data
     export EXTERNAL_STORAGE /sdcard
 
-    #symlink /system/etc /etc
+    symlink /system/etc /etc
 
-    #mkdir /boot
-    #mkdir /recovery
-	mkdir /cache
-	mkdir /logs
-	mkdir /system
-	mkdir /data
-	mkdir /sdcard
-    mkdir /usbotg
+    mkdir /cache
+    mkdir /logs
+    mkdir /system
+    mkdir /data
+    mkdir /sdcard
+    mkdir /sd-ext
+    mkdir /internal_sd
+    mkdir /external_sd
+    mkdir /datadata
+    mkdir /emmc
     mkdir /tmp
     mount /tmp /tmp tmpfs
 	
-	chown root shell /tmp
+    chown root shell /tmp
     chmod 0775 /tmp
 	
-	mount ext4 /dev/block/mmcblk0p10 /temp_data
+    mount ext4 /dev/block/mmcblk0p10 /temp_data
     mkdir /temp_data/recovery_tmp 0775 root shell
     symlink /temp_data/recovery_tmp /tmp
         
@@ -148,3 +150,6 @@ on property:sys.usb.config=mass_storage
 # when changing the default configuration
 on property:persist.sys.usb.config=*
     setprop sys.usb.config ${persist.sys.usb.config}
+
+service remount /sbin/remount.sh
+    oneshot
