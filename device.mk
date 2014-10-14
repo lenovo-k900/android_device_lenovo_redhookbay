@@ -8,13 +8,15 @@ ADDITIONAL_DEFAULT_PROPERTIES := \
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
-	$(LOCAL_PATH)/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
+	$(LOCAL_PATH)/blobs/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
+	$(LOCAL_PATH)/blobs/remount.sh:recovery/root/sbin/remount.sh \
 	$(LOCAL_PATH)/ramdisk/busybox:root/system/bin/busybox \
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/blobs/watchdogd:recovery/root/sbin/watchdogd \
 	$(LOCAL_PATH)/blobs/watchdogd:recovery/root/watchdogd \
 	$(LOCAL_PATH)/blobs/watchdogd:root/watchdogd \
+	$(LOCAL_PATH)/blobs/file_contexts:root/file_contexts \
 	$(LOCAL_PATH)/ramdisk/ia_watchdogd:system/bin/ia_watchdogd \
 	$(LOCAL_PATH)/ramdisk/init:root/init
 	

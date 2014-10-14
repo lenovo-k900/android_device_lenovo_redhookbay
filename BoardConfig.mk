@@ -8,7 +8,7 @@ TARGET_ARCH_VARIANT := x86-atom
 TARGET_CPU_ABI := x86
 TARGET_CPU_VARIANT := x86
 TARGET_ARCH_VARIANT_FPU := sse
-TARGET_CPU_ABI2 := x86
+TARGET_CPU_ABI2 := armeabi-v7a
 TARGET_CPU_SMP := true
 TARGET_PRELINK_MODULE := false
 INTEL_INGREDIENTS_VERSIONS := true
@@ -19,6 +19,23 @@ DEVICE_BASE_RECOVERY_IMAGE := $(LOCAL_PATH)/blobs/recovery.img
 
 BOARD_HAS_NO_FB2PNG := true
 TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
+
+# Enabling Houdini [ARM native code runs on Intel x86 using an this emulation feature]
+INTEL_HOUDINI := true
+ifdef ($(INTEL_HOUDINI))
+ADDITIONAL_BUILD_PROPERTIES += ro.product.cpu.abi2=armeabi-v7a
+ADDITIONAL_BUILD_PROPERTIES += ro.product.cpu.upgradeabi=armeabi-v7a
+ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.houdini=on
+endif
+
+#HW_Rendering
+BOARD_USES_HWCOMPOSER := true
+USE_OPENGL_RENDERER := true
+BOARD_EGL_CFG := $(LOCAL_PATH)/blobs/egl.cfg
+BOARD_USE_LIBVA_INTEL_DRIVER := true
+BOARD_USE_LIBVA := true
+BOARD_USE_LIBMIX := true
+BOARD_USES_WRS_OMXIL_CORE := true
 
 # Recovery config global
 RECOVERY_GRAPHICS_USE_LINELENGTH := true

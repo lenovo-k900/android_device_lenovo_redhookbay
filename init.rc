@@ -1,6 +1,6 @@
 # (c) qubex, xxx-man, kraminski
 
-#import /init.watchdog.rc
+import /init.watchdog.rc
 
 on early-init
     start ueventd

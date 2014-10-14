@@ -1,4 +1,4 @@
-#!/system/bin/sh
+34#!/system/bin/sh
 
 dir=/data/data/com.main.recoveryinstaller/files/recovery
 busybox=$dir/busybox
