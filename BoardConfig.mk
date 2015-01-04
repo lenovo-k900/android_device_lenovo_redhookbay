@@ -2,7 +2,8 @@ LOCAL_PATH := device/lenovo/redhookbay
 
 # Board configuration
 TARGET_NO_BOOTLOADER := true
-TARGET_BOOTLOADER_BOARD_NAME := redhookbay
+TARGET_BOARD_PLATFORM := clovertrail
+TARGET_BOOTLOADER_BOARD_NAME := clovertrail
 TARGET_ARCH := x86
 TARGET_ARCH_VARIANT := x86-atom
 TARGET_CPU_ABI := x86
@@ -44,7 +45,7 @@ DEVICE_RESOLUTION := 1080x1920
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/etc/recovery.fstab
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/init.rc
+TARGET_RECOVERY_INITRC := $(LOCAL_PATH)/etc/recovery.init.rc
 RECOVERY_SDCARD_ON_DATA := true
 
 # TWRP recovery config
@@ -63,3 +64,39 @@ TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/blobs/kernel
 
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
+
+## NEW ##
+
+# Wifi
+BOARD_WLAN_DEVICE := bcmdhd
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
+WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_HOSTAPD_DRIVER := NL80211
+WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
+WIFI_DRIVER_FW_PATH_AP    := "/system/etc/firmware/fw_bcmdhd_43362_apsta.bin"
+WIFI_DRIVER_FW_PATH_STA   := "/system/etc/firmware/fw_bcmdhd_43362.bin"
+WIFI_DRIVER_MODULE_ARG := "iface_name=wlan0 firmware_path=/system/etc/firmware/fw_bcmdhd_43362.bin"
+
+# Audio
+BOARD_USES_ALSA_AUDIO := true
+
+# SELinux
+HAVE_SELINUX := true
+BOARD_SEPOLICY_DIRS += device/lenovo/redhookbay/sepolicy
+BOARD_SEPOLICY_UNION += \
+    file_contexts \
+    seapp_contexts \
+    property_contexts \
+    file.te \
+    genfs_contexts \
+    device.te \
+    vold.te \
+    ecryptfs.te \
+    surfaceflinger.te \
+    zygote.te \
+    su.te \
+    pvrsrvctl.te \
+    bluetooth.te \
+    mediaserver.te
