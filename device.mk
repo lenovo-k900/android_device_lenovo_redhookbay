@@ -7,7 +7,7 @@ ADDITIONAL_DEFAULT_PROPERTIES := \
     ro.debugabble=1 
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
+#	$(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
 	$(LOCAL_PATH)/blobs/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
 	$(LOCAL_PATH)/blobs/remount.sh:recovery/root/sbin/remount.sh \
 	$(LOCAL_PATH)/ramdisk/busybox:root/system/bin/busybox \

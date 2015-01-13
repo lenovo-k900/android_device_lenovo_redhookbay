@@ -5,7 +5,7 @@ TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := clovertrail
 TARGET_BOOTLOADER_BOARD_NAME := clovertrail
 TARGET_ARCH := x86
-TARGET_ARCH_VARIANT := x86-atom
+TARGET_ARCH_VARIANT := x86
 TARGET_CPU_ABI := x86
 TARGET_CPU_VARIANT := x86
 TARGET_ARCH_VARIANT_FPU := sse
@@ -17,6 +17,8 @@ INTEL_INGREDIENTS_VERSIONS := true
 # Use boot tools to make Intel-formatted images
 DEVICE_BASE_BOOT_IMAGE := $(LOCAL_PATH)/blobs/boot.img
 DEVICE_BASE_RECOVERY_IMAGE := $(LOCAL_PATH)/blobs/recovery.img
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/blobs/kernel
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/intel-boot-tools/boot.mk
 
 BOARD_HAS_NO_FB2PNG := true
 TARGET_GLOBAL_CFLAGS += -DUSE_SSSE3 -DUSE_SSE2
@@ -59,25 +61,10 @@ TWHAVE_SELINUX := false
 TW_MAX_BRIGHTNESS := 255
 TW_BRIGHTNESS_PATH := /sys/class/backlight/psb-bl/brightness
 
-# This is deprecated and will be dropped
-TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/blobs/kernel
-
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
 ## NEW ##
-
-# Wifi
-BOARD_WLAN_DEVICE := bcmdhd
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
-WPA_SUPPLICANT_VERSION := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_HOSTAPD_DRIVER := NL80211
-WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_AP    := "/system/etc/firmware/fw_bcmdhd_43362_apsta.bin"
-WIFI_DRIVER_FW_PATH_STA   := "/system/etc/firmware/fw_bcmdhd_43362.bin"
-WIFI_DRIVER_MODULE_ARG := "iface_name=wlan0 firmware_path=/system/etc/firmware/fw_bcmdhd_43362.bin"
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
