@@ -1,0 +1,10 @@
+on init
+    chown system system /usr/bin/ia_watchdogd
+    chmod 0750 /usr/bin/ia_watchdogd
+
+
+service watchdogd /usr/bin/ia_watchdogd
+    class core
+    user system
+    group system
+    oneshot

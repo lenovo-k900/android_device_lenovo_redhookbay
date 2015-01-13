@@ -1,0 +1,255 @@
+import init.common.rc
+import init.debug.rc
+import init.diag.rc
+import init.avc.rc
+import init.wireless.rc
+import init.modem.rc
+import init.wifi.rc
+#import init.widi.rc
+import init.platform.usb.rc
+import init.wl128x.rc
+import init.gps.rc
+import init.bt.rc
+import init.smartcardapi.rc
+
+on init
+    # Create removable storage path
+    mkdir /storage/usbcard 0000 system system
+    mkdir /storage/sdcard0 0000 system system
+    mkdir /storage/usbotg 0777 system system
+    mkdir /storage/usbotg1 0777 system system
+
+    # See storage config details at http://source.android.com/tech/storage/
+    mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /storage/emulated 0555 root root
+
+    export EXTERNAL_STORAGE /storage/sdcard0
+    #export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    #export EMULATED_STORAGE_TARGET /storage/emulated
+
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/usbotg /mnt/usbotg
+    symlink /storage/usbotg1 /mnt/usbotg1
+
+    write /sys/class/graphics/fbcon/cursor_blink 0
+    mkdir /data/system/ 0770 system system
+    mkdir /data/misc 01771 system misc
+    mkdir /data/misc/audio 0770 audio audio
+
+    # Insert GPU driver
+    insmod /lib/modules/pnwdisp.ko
+    insmod /lib/modules/pvrsgx.ko
+    insmod /lib/modules/hdmi_audio.ko
+
+    # Insert matrix for PnP measurements
+    insmod /lib/modules/matrix.ko
+    chmod 0640 /dev/matrix
+
+on boot
+#  Mount debugfs for systrace settings
+    mount debugfs none /sys/kernel/debug
+#  Permissions for Thermal Management
+    chown system system /sys/class/power_supply/bq24192_charger/device/charge_current_limit
+    chown system system /sys/module/intel_mid_osip/parameters/force_shutdown_occured
+    chown system system /sys/module/intel_mid_osip/parameters/thermal_shutdown_occured
+    chown system system /sys/class/thermal/cooling_device0/cur_state
+    chown system system /sys/class/thermal/cooling_device1/cur_state
+    chown system system /sys/class/thermal/deferrable_timer/enable
+    chown system system /sys/class/thermal/deferrable_timer/timeout
+
+#   Offload specific properties
+
+#   lpa.tunnelling.enable
+#   A 32 bit value.  To be set in HEX
+#   |---------|--------|--------|--------|
+#   |Byte 3   |Byte 2  |Byte 1  |Byte 0  |
+#   |Reserved |Reserved|Codec   |Feature |
+#   |---------|--------|--------|--------|
+#   First byte from the right represents feature
+#   Second byte represents codec
+#   Third and Fourth byte reserved for future use
+#   Least Significant Byte 1 - feature
+#   Bit position  8th,7th,6th,5th,4th     3rd          2nd      1st
+#   Indication    Reserved for future  Multichannel   Effects   Video
+#   Least Significant Byte 2 - codec
+#   Bit position  8th,7th,6th,5th      4th     3rd      2nd   1st
+#   Indication    Reserved for future WMA-9    EAC3     AAC   MP3
+
+#   Set the HEX value by ORing the bits for each format/feature
+#   Example usage: To set AAC and MP3 offload, value to be set is 300
+
+    setprop lpa.tunnelling.enable 300
+    setprop offload.min.file.duration.secs 20
+    setprop offload.compress.device 3
+    setprop audio.device.name K5
+
+#  Enable deep buffer property for CTP
+   setprop lpa.deepbuffer.enable 1
+
+# Enabling/Disabling Audio dump properties
+
+    # Encoded Audio from parser
+    setprop audio.media_pb.parser.dump disable
+
+    # Decoded Audio from decoder
+    setprop audio.media_pb.decoder.dump disable
+
+    # Decoded Audio - Flinger output
+    setprop audio.media_pb.flinger.dump disable
+
+    # Raw Audio - Flinger input
+    setprop audio.media_rc.flinger.dump disable
+
+
+
+#  Set autosuspend delay as 30 ms to save power in graphic display
+    write /sys/devices/pci0000:00/0000:00:03.4/power/autosuspend_delay_ms 30
+
+#  Set autosuspend delay to 200 ms to make sure camera AF and sensor setting are applied fast enough
+    write /sys/devices/pci0000:00/0000:00:03.3/power/autosuspend_delay_ms 200
+
+# Define TCP buffer sizes for various networks
+#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    setprop net.tcp.buffersize.default 4096,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.wifi    524288,1048576,2097152,262144,524288,1048576
+    setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1048576
+    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
+    setprop net.tcp.buffersize.hspa    4094,87380,262144,4096,16384,262144
+    setprop net.tcp.buffersize.hsupa   4094,87380,262144,4096,16384,262144
+    setprop net.tcp.buffersize.hsdpa   4094,87380,262144,4096,16384,262144
+    setprop net.tcp.buffersize.hspap   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.edge    4093,26280,110208,4096,16384,110208
+    setprop net.tcp.buffersize.gprs    4092,8760,65536,4096,8760,65536
+    setprop net.tcp.buffersize.evdo    4094,87380,262144,4096,16384,262144
+
+# Reboot in COS on shutdown request when charger is plugged
+    setprop ro.rebootchargermode true
+
+on post-fs-data
+    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+    mkdir /data/media 0770 media_rw media_rw
+    chown media_rw media_rw /data/media
+    setprop ro.crypto.fuse_sdcard false
+
+    mkdir /data/misc/firmware 0770 system system
+
+    #Invoke fuel gauging helper binary to restore config data
+    symlink /dev/max170xx /dev/fg
+    chmod 0775 /dev/fg
+    chmod 0775 /dev/max170xx
+    chmod 0444 /system/etc/fg_config.bin
+    start fg_conf
+
+on post-fs
+#  Permissions for Thermal Management
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
+
+# Performance tweaks for interactive governor
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+
+    # Volume keys wakeup capability
+    chmod 0664 /sys/devices/platform/gpio-keys/enabled_wakeup
+    chmod 0664 /sys/devices/platform/gpio-keys/disabled_wakeup
+    chown media system /sys/devices/platform/gpio-keys/enabled_wakeup
+    chown media system /sys/devices/platform/gpio-keys/disabled_wakeup
+
+    # Insert touchscreen module
+    insmod /lib/modules/rmi4.ko
+
+#  Permissions for Sensors
+    #compass/gsensor lsm303d
+    chown system system /sys/bus/i2c/devices/5-001e/pollrate_acc_us
+    chown system system /sys/bus/i2c/devices/5-001e/pollrate_mag_us
+    chown system system /sys/bus/i2c/devices/5-001e/enable_device_acc
+    chown system system /sys/bus/i2c/devices/5-001e/enable_device_mag
+    chown system system /sys/bus/i2c/devices/5-001e/enable_device_lv
+    chown system system /sys/bus/i2c/devices/5-001e/range_acc
+    chown system system /sys/bus/i2c/devices/5-001e/range_mag
+
+    #als/ps apds990x
+    chown system system /sys/bus/i2c/devices/5-0039/enable_ps_sensor
+    chown system system /sys/bus/i2c/devices/5-0039/enable_als_sensor
+    chown system system /sys/bus/i2c/devices/5-0039/als_poll_delay
+    chown system system /sys/bus/i2c/devices/5-0039/piht
+    chown system system /sys/bus/i2c/devices/5-0039/pilt
+
+    chown system system /dev/sep_sec_driver
+    chmod 0660 /dev/sep_sec_driver
+
+	#Gyroscope l3gd20
+    chown system system /sys/bus/i2c/devices/5-006a/pollrate_ms
+    chown system system /sys/bus/i2c/devices/5-006a/enable_device
+    chown system system /sys/bus/i2c/devices/5-006a/range
+
+# Permissions for LED
+    chown system system /sys/class/leds/intel_keypad_led/brightness
+
+# Permissions for BCU Driver
+    chown system system /sys/devices/platform/msic_ocd/msic_current/batt_level
+
+# create virtual SD card at /mnt/sdcard, based on the /data/media directory
+# daemon will drop to user/group system/media_rw after initializing
+# underlying files in /data/media will be created with user and group media_rw (1023)
+service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+    class late_start
+	disabled
+
+service fg_conf /system/bin/fg_conf -w
+    group system
+    oneshot
+    disabled
+
+# add by zhongwei1@lenovo.com for the jcommand
+service jcommand /system/bin/sh /system/bin/jcommand.sh
+    user root
+    class main
+    disabled
+    oneshot
+
+service copyaplog /system/bin/sh /system/bin/copy_aplog.sh
+    class main
+    disabled
+    oneshot
+
+on property:ro.debuggable=1
+# Permissions for OSMonitor app
+   chmod 0666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+   chmod 0666 /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
+   chmod 0666 /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
+   chmod 0666 /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq
+   chmod 0666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+   chmod 0666 /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
+   chmod 0666 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+   chmod 0666 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
+   chmod 0666 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+   chmod 0666 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
+   chmod 0666 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
+   chmod 0666 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
+   chmod 0666 /sys/kernel/debug/pmu_dev_stats
+   chmod 0666 /sys/devices/system/cpu/cpu1/online
+   chmod 0666 /sys/devices/system/cpu/cpu3/online
+   chmod 0666 /sys/module/intel_soc_pmu/parameters/s0ix
+
+on property:sys.boot_completed=1
+#  Permissions for Thermal Management
+    chown system system /sys/class/thermal/cooling_device2/cur_state
+
+on charger
+    mount_all /fstab.charger.${ro.hardware}
+
+    setprop ro.boot.min.cap 3
+    start watchdogd
+    insmod /lib/modules/rmi4.ko boot_mode=1
+    insmod /lib/modules/atomisp-css2300.ko
+
+    # Invoke fuel gauging helper binary to restore config data
+    symlink /dev/max170xx /dev/fg
+    chmod 0775 /dev/fg
+    wait /system/bin/fg_conf
+    start fg_conf
+

@@ -1,0 +1,3 @@
+# if not previously set, set to default value
+on property:ro.boot.spid=*:*:*:*:*:*
+	setprop ro.spid.telephony.rxdiv 0
