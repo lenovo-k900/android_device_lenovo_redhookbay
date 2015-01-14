@@ -1,10 +1,8 @@
-# mount point  		fstype		device
-
-/factory 	ext4  	/dev/block/mmcblk0p3 	length=0
-/spare   	ext4  	/dev/block/mmcblk0p4 	length=0
-/cache   	ext4  	/dev/block/mmcblk0p6 	length=0     
-/logs    	ext4  	/dev/block/mmcblk0p7 	length=0     
-/system  	ext4  	/dev/block/mmcblk0p8 	length=0     
-/data    	ext4  	/dev/block/mmcblk0p9 	length=-16384
-/sdcard  	vfat  	/dev/block/mmcblk0p10	length=-16384
-/emmc		  vfat  	/dev/block/mmcblk1p1 	length=0
+/dev/block/mmcblk0p3	/factory	ext4	nosuid,nodev,noatime,barrier=1,data=ordered                                             	wait                                           
+/dev/block/mmcblk0p8	/system 	ext4	ro,noatime                                                                              	wait                                           
+/dev/block/mmcblk0p6	/cache  	ext4	nosuid,nodev,noatime,barrier=1,journal_async_commit,data=ordered                        	wait,check                                     
+/dev/block/mmcblk0p5	/config 	ext4	nosuid,nodev,noatime,barrier=1,data=ordered                                             	wait                                           
+/dev/block/mmcblk0p9	/data   	ext4	nosuid,nodev,noatime,barrier=1,journal_async_commit,data=ordered,noauto_da_alloc,discard	wait,check,encryptable=/factory/userdata_footer
+/dev/block/mmcblk0p7	/logs   	ext4	nosuid,nodev,barrier=1,journal_async_commit,data=ordered                                	wait                                           
+*/block/sd          	/storage/usbcard	vfat	None	wait,voldmanaged=usbcard:auto                                                      
+*/block/mmcblk1     	/storage/sdcard_ext	vfat	None	wait,voldmanaged=sdcard_ext:auto                                                   
