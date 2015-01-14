@@ -20,6 +20,9 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
 # Ramdisk fstab / rc files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.watchdog.rc:root/init.watchdog.rc \
