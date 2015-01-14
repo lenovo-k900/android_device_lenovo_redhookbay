@@ -24,16 +24,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.watchdog.rc:root/init.watchdog.rc \
     $(LOCAL_PATH)/ramdisk/fstab.charger.redhookbay:root/fstab.charger.redhookbay \
-    $(LOCAL_PATH)/ramdisk/fstab.ramconsole.redhookbay:root/fstab.ramconsole.redhookbay \
     $(LOCAL_PATH)/ramdisk/fstab.redhookbay:root/fstab.redhookbay \
     $(LOCAL_PATH)/ramdisk/init.avc.rc:root/init.avc.rc \
     $(LOCAL_PATH)/ramdisk/init.bt.rc:root/init.bt.rc \
-    $(LOCAL_PATH)/ramdisk/init.compass.rc:root/init.compass.rc \
     $(LOCAL_PATH)/ramdisk/init.debug.rc:root/init.debug.rc \
     $(LOCAL_PATH)/ramdisk/init.diag.rc:root/init.diag.rc \
-    $(LOCAL_PATH)/ramdisk/init.logtool.rc:root/init.logtool.rc \
-    $(LOCAL_PATH)/ramdisk/init.partlink.rc:root/init.partlink.rc \
-    $(LOCAL_PATH)/ramdisk/init.environ.rc:root/init.environ.rc \
     $(LOCAL_PATH)/ramdisk/init.bt.vendor.rc:root/init.bt.vendor.rc \
     $(LOCAL_PATH)/ramdisk/init.common.rc:root/init.common.rc \
     $(LOCAL_PATH)/ramdisk/init.gps.rc:root/init.gps.rc \
