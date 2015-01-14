@@ -75,53 +75,53 @@ PRODUCT_COPY_FILES += \
 # VENDOR
 # 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/vendor/bin/pvrsrvctl:system/vendor/bin/pvrsrvctl
-    $(LOCAL_PATH)/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf
-    $(LOCAL_PATH)/vendor/lib/libbt-vendor.so:system/vendor/lib/libbt-vendor.so
-    $(LOCAL_PATH)/vendor/lib/libglslcompiler.so:system/vendor/lib/libglslcompiler.so
-    $(LOCAL_PATH)/vendor/lib/libglslcompiler.so.1:system/vendor/lib/libglslcompiler.so.1
-    $(LOCAL_PATH)/vendor/lib/libglslcompiler.so.1.11.2630400:system/vendor/lib/libglslcompiler.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/libIMGegl.so:system/vendor/lib/libIMGegl.so
-    $(LOCAL_PATH)/vendor/lib/libIMGegl.so.1:system/vendor/lib/libIMGegl.so.1
-    $(LOCAL_PATH)/vendor/lib/libIMGegl.so.1.11.2630400:system/vendor/lib/libIMGegl.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/libpvr2d.so:system/vendor/lib/libpvr2d.so
-    $(LOCAL_PATH)/vendor/lib/libpvr2d.so.1:system/vendor/lib/libpvr2d.so.1
-    $(LOCAL_PATH)/vendor/lib/libpvr2d.so.1.11.2630400:system/vendor/lib/libpvr2d.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/libpvrANDROID_WSEGL.so:system/vendor/lib/libpvrANDROID_WSEGL.so
-    $(LOCAL_PATH)/vendor/lib/libpvrANDROID_WSEGL.so.1:system/vendor/lib/libpvrANDROID_WSEGL.so.1
-    $(LOCAL_PATH)/vendor/lib/libpvrANDROID_WSEGL.so.1.11.2630400:system/vendor/lib/libpvrANDROID_WSEGL.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/libPVRRS.so:system/vendor/lib/libPVRRS.so
-    $(LOCAL_PATH)/vendor/lib/libPVRRS.so.1:system/vendor/lib/libPVRRS.so.1
-    $(LOCAL_PATH)/vendor/lib/libPVRRS.so.1.11.2630400:system/vendor/lib/libPVRRS.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/libPVRScopeServices.so:system/vendor/lib/libPVRScopeServices.so
-    $(LOCAL_PATH)/vendor/lib/libPVRScopeServices.so.1:system/vendor/lib/libPVRScopeServices.so.1
-    $(LOCAL_PATH)/vendor/lib/libPVRScopeServices.so.1.11.2630400:system/vendor/lib/libPVRScopeServices.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/librsccompiler.so:system/vendor/lib/librsccompiler.so
-    $(LOCAL_PATH)/vendor/lib/librsccompiler.so.1:system/vendor/lib/librsccompiler.so.1
-    $(LOCAL_PATH)/vendor/lib/librsccompiler.so.1.11.2630400:system/vendor/lib/librsccompiler.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/librsccore.bc:system/vendor/lib/librsccore.bc
-    $(LOCAL_PATH)/vendor/lib/librsccore.bc.1:system/vendor/lib/librsccore.bc.1
-    $(LOCAL_PATH)/vendor/lib/librsccore.bc.1.11.2630400:system/vendor/lib/librsccore.bc.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/libsrv_init.so:system/vendor/lib/libsrv_init.so
-    $(LOCAL_PATH)/vendor/lib/libsrv_init.so.1:system/vendor/lib/libsrv_init.so.1
-    $(LOCAL_PATH)/vendor/lib/libsrv_init.so.1.11.2630400:system/vendor/lib/libsrv_init.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/libsrv_um.so:system/vendor/lib/libsrv_um.so
-    $(LOCAL_PATH)/vendor/lib/libsrv_um.so.1:system/vendor/lib/libsrv_um.so.1
-    $(LOCAL_PATH)/vendor/lib/libsrv_um.so.1.11.2630400:system/vendor/lib/libsrv_um.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/libusc.so:system/vendor/lib/libusc.so
-    $(LOCAL_PATH)/vendor/lib/libusc.so.1:system/vendor/lib/libusc.so.1
-    $(LOCAL_PATH)/vendor/lib/libusc.so.1.11.2630400:system/vendor/lib/libusc.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so:system/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so
-    $(LOCAL_PATH)/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so.1:system/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so.1
-    $(LOCAL_PATH)/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so.1.11.2630400:system/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so:system/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so
-    $(LOCAL_PATH)/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so.1:system/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so.1
-    $(LOCAL_PATH)/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so.1.11.2630400:system/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so:system/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so
-    $(LOCAL_PATH)/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so.1:system/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so.1
-    $(LOCAL_PATH)/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so.1.11.2630400:system/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so.1.11.2630400
-    $(LOCAL_PATH)/vendor/lib/hw/gralloc.redhookbay.so:system/vendor/lib/hw/gralloc.redhookbay.so
-    $(LOCAL_PATH)/vendor/lib/hw/gralloc.redhookbay.so.1.11.2630400:system/vendor/lib/hw/gralloc.redhookbay.so.1.11.2630400
+    $(LOCAL_PATH)/vendor/bin/pvrsrvctl:system/vendor/bin/pvrsrvctl \
+    $(LOCAL_PATH)/vendor/etc/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(LOCAL_PATH)/vendor/lib/libbt-vendor.so:system/vendor/lib/libbt-vendor.so \
+    $(LOCAL_PATH)/vendor/lib/libglslcompiler.so:system/vendor/lib/libglslcompiler.so \
+    $(LOCAL_PATH)/vendor/lib/libglslcompiler.so.1:system/vendor/lib/libglslcompiler.so.1 \
+    $(LOCAL_PATH)/vendor/lib/libglslcompiler.so.1.11.2630400:system/vendor/lib/libglslcompiler.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/libIMGegl.so:system/vendor/lib/libIMGegl.so \
+    $(LOCAL_PATH)/vendor/lib/libIMGegl.so.1:system/vendor/lib/libIMGegl.so.1 \
+    $(LOCAL_PATH)/vendor/lib/libIMGegl.so.1.11.2630400:system/vendor/lib/libIMGegl.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/libpvr2d.so:system/vendor/lib/libpvr2d.so \
+    $(LOCAL_PATH)/vendor/lib/libpvr2d.so.1:system/vendor/lib/libpvr2d.so.1 \
+    $(LOCAL_PATH)/vendor/lib/libpvr2d.so.1.11.2630400:system/vendor/lib/libpvr2d.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/libpvrANDROID_WSEGL.so:system/vendor/lib/libpvrANDROID_WSEGL.so \
+    $(LOCAL_PATH)/vendor/lib/libpvrANDROID_WSEGL.so.1:system/vendor/lib/libpvrANDROID_WSEGL.so.1 \
+    $(LOCAL_PATH)/vendor/lib/libpvrANDROID_WSEGL.so.1.11.2630400:system/vendor/lib/libpvrANDROID_WSEGL.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/libPVRRS.so:system/vendor/lib/libPVRRS.so \
+    $(LOCAL_PATH)/vendor/lib/libPVRRS.so.1:system/vendor/lib/libPVRRS.so.1 \
+    $(LOCAL_PATH)/vendor/lib/libPVRRS.so.1.11.2630400:system/vendor/lib/libPVRRS.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/libPVRScopeServices.so:system/vendor/lib/libPVRScopeServices.so \
+    $(LOCAL_PATH)/vendor/lib/libPVRScopeServices.so.1:system/vendor/lib/libPVRScopeServices.so.1 \
+    $(LOCAL_PATH)/vendor/lib/libPVRScopeServices.so.1.11.2630400:system/vendor/lib/libPVRScopeServices.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/librsccompiler.so:system/vendor/lib/librsccompiler.so \
+    $(LOCAL_PATH)/vendor/lib/librsccompiler.so.1:system/vendor/lib/librsccompiler.so.1 \
+    $(LOCAL_PATH)/vendor/lib/librsccompiler.so.1.11.2630400:system/vendor/lib/librsccompiler.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/librsccore.bc:system/vendor/lib/librsccore.bc \
+    $(LOCAL_PATH)/vendor/lib/librsccore.bc.1:system/vendor/lib/librsccore.bc.1 \
+    $(LOCAL_PATH)/vendor/lib/librsccore.bc.1.11.2630400:system/vendor/lib/librsccore.bc.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/libsrv_init.so:system/vendor/lib/libsrv_init.so \
+    $(LOCAL_PATH)/vendor/lib/libsrv_init.so.1:system/vendor/lib/libsrv_init.so.1 \
+    $(LOCAL_PATH)/vendor/lib/libsrv_init.so.1.11.2630400:system/vendor/lib/libsrv_init.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/libsrv_um.so:system/vendor/lib/libsrv_um.so \
+    $(LOCAL_PATH)/vendor/lib/libsrv_um.so.1:system/vendor/lib/libsrv_um.so.1 \
+    $(LOCAL_PATH)/vendor/lib/libsrv_um.so.1.11.2630400:system/vendor/lib/libsrv_um.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/libusc.so:system/vendor/lib/libusc.so \
+    $(LOCAL_PATH)/vendor/lib/libusc.so.1:system/vendor/lib/libusc.so.1 \
+    $(LOCAL_PATH)/vendor/lib/libusc.so.1.11.2630400:system/vendor/lib/libusc.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so:system/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so \
+    $(LOCAL_PATH)/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so.1:system/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so.1 \
+    $(LOCAL_PATH)/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so.1.11.2630400:system/vendor/lib/egl/libEGL_POWERVR_SGX544_115.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so:system/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so \
+    $(LOCAL_PATH)/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so.1:system/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so.1 \
+    $(LOCAL_PATH)/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so.1.11.2630400:system/vendor/lib/egl/libGLESv1_CM_POWERVR_SGX544_115.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so:system/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so \
+    $(LOCAL_PATH)/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so.1:system/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so.1 \
+    $(LOCAL_PATH)/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so.1.11.2630400:system/vendor/lib/egl/libGLESv2_POWERVR_SGX544_115.so.1.11.2630400 \
+    $(LOCAL_PATH)/vendor/lib/hw/gralloc.redhookbay.so:system/vendor/lib/hw/gralloc.redhookbay.so \
+    $(LOCAL_PATH)/vendor/lib/hw/gralloc.redhookbay.so.1.11.2630400:system/vendor/lib/hw/gralloc.redhookbay.so.1.11.2630400 \
     $(LOCAL_PATH)/vendor/lib/hw/gralloc.redhookbay.so.1:system/vendor/lib/hw/gralloc.redhookbay.so.1
 #
 # for external SD card
