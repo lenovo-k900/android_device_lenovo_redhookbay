@@ -42,7 +42,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/props.board.rc:root/props.board.rc \
     $(LOCAL_PATH)/ramdisk/props.platform.rc:root/props.platform.rc \
     $(LOCAL_PATH)/ramdisk/props.rc:root/props.rc \
-    $(LOCAL_PATH)/ramdisk/rfkill_bt.sh:root/rfkill_bt.sh \
     $(LOCAL_PATH)/ramdisk/ueventd.modules.blacklist:root/ueventd.modules.blacklist \
     $(LOCAL_PATH)/ramdisk/ueventd.redhookbay.rc:root/ueventd.redhookbay.rc
 
