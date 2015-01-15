@@ -131,6 +131,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/blobs/configs/platform.xml:system/etc/permissions/platform.xml
 
+# Houdini
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/houdini/system,system)
+
+PRODUCT_PACKAGES += \
+    libhoudini_hook \
+    houdini_hook
+
 # media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/blobs/configs/media_codecs.xml:system/etc/media_codecs.xml \
