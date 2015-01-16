@@ -1,7 +1,6 @@
 LOCAL_PATH := device/lenovo/redhookbay
 
 # Board configuration
-TARGET_NO_BOOTLOADER := true
 TARGET_BOARD_PLATFORM := clovertrail
 TARGET_BOOTLOADER_BOARD_NAME := clovertrail
 TARGET_ARCH := x86
@@ -13,6 +12,13 @@ TARGET_CPU_ABI2 := armeabi-v7a
 TARGET_CPU_SMP := true
 TARGET_PRELINK_MODULE := false
 INTEL_INGREDIENTS_VERSIONS := true
+
+TARGET_NO_RECOVERY := false
+TARGET_NO_BOOTLOADER := true
+TARGET_NO_RADIOIMAGE := true
+
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+LOCAL_CFLAGS += -DARCH_IA32
 
 # Use boot tools to make Intel-formatted images
 DEVICE_BASE_BOOT_IMAGE := $(LOCAL_PATH)/blobs/boot.img

@@ -1,4 +1,5 @@
-/dev/block/mmcblk0p1	/boot		hidden
+/dev/block/mmcblk0p1	/boot		emmc	defaults											defaults
+/dev/block/mmcblk0p1	/recovery	emmc	defaults											defaults
 /dev/block/mmcblk0p3	/factory	ext4	nosuid,nodev,noatime,barrier=1,data=ordered                                             	wait                                           
 /dev/block/mmcblk0p8	/system 	ext4	ro,noatime                                                                              	wait                                           
 /dev/block/mmcblk0p6	/cache  	ext4	nosuid,nodev,noatime,barrier=1,journal_async_commit,data=ordered                        	wait,check                                     
