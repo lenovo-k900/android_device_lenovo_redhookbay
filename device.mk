@@ -130,11 +130,16 @@ PRODUCT_COPY_FILES += \
 # non-opensource libs
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
-    $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
-    $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
-    $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
-    $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
-    
+    $(LOCAL_PATH)/vendor/lib/libhwcwidi.so:system/lib/libhwcwidi.so \
+    $(LOCAL_PATH)/vendor/lib/libmultidisplay.so:system/lib/libmultidisplay.so \
+    $(LOCAL_PATH)/vendor/lib/libmultidisplayjni.so:system/lib/libmultidisplayjni.so \
+    $(LOCAL_PATH)/vendor/lib/libsepdrm.so:system/lib/libsepdrm.so \
+    $(LOCAL_PATH)/vendor/lib/libsepdrmjni.so:system/lib/libsepdrmjni.so \
+    $(LOCAL_PATH)/vendor/lib/libwsbm.so:system/lib/libwsbm.so \
+    $(LOCAL_PATH)/vendor/lib/hw/hwcomposer.redhookbay.so:system/lib/hw/hwcomposer.redhookbay.so \
+    $(LOCAL_PATH)/vendor/lib/hw/lights.redhookbay.so:system/lib/hw/lights.redhookbay.so \
+    $(LOCAL_PATH)/vendor/lib/hw/sensors.redhookbay.so:system/lib/hw/sensors.redhookbay.so \
+    $(LOCAL_PATH)/vendor/lib/hw/vibrator.redhookbay.so:system/lib/hw/vibrator.redhookbay.so
     
 # for external SD card
 PRODUCT_COPY_FILES += \
