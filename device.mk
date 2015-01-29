@@ -126,7 +126,16 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vendor/lib/hw/gralloc.redhookbay.so:system/vendor/lib/hw/gralloc.redhookbay.so \
     $(LOCAL_PATH)/vendor/lib/hw/gralloc.redhookbay.so.1.11.2630400:system/vendor/lib/hw/gralloc.redhookbay.so.1.11.2630400 \
     $(LOCAL_PATH)/vendor/lib/hw/gralloc.redhookbay.so.1:system/vendor/lib/hw/gralloc.redhookbay.so.1
-#
+
+# non-opensource libs
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
+    $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
+    $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
+    $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
+    $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
+    
+    
 # for external SD card
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/blobs/configs/platform.xml:system/etc/permissions/platform.xml
