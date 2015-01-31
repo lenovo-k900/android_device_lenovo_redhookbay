@@ -24,8 +24,8 @@ on init
     mkdir /storage/emulated 0555 root root
 
     export EXTERNAL_STORAGE /storage/sdcard0
-    #export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    #export EMULATED_STORAGE_TARGET /storage/emulated
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
 
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
@@ -130,7 +130,7 @@ on post-fs-data
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
-    setprop ro.crypto.fuse_sdcard false
+    setprop ro.crypto.fuse_sdcard true
 
     mkdir /data/misc/firmware 0770 system system
 
