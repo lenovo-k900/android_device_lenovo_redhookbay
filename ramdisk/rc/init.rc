@@ -381,6 +381,14 @@ on boot
     class_start core
     class_start main
 
+	setprop wifi.interface wlan0
+	setprop ap.interface wlan0
+	insmod /lib/modules/bcmdhd.ko
+	start wlan_prov
+	start driver_loader
+	wpa_supplicant -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
+    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin -puse_p2p_group_interface=1 -d -d
+	wpa_supplicant -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin  -dd
 
     setprop system_init.startsurfaceflinger 0
 
