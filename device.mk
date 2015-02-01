@@ -25,28 +25,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Ramdisk fstab / rc files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ramdisk/init.watchdog.rc:root/init.watchdog.rc \
-    $(LOCAL_PATH)/ramdisk/fstab.charger.redhookbay:root/fstab.charger.redhookbay \
-    $(LOCAL_PATH)/ramdisk/fstab.redhookbay:root/fstab.redhookbay \
-    $(LOCAL_PATH)/ramdisk/init.avc.rc:root/init.avc.rc \
-    $(LOCAL_PATH)/ramdisk/init.bt.rc:root/init.bt.rc \
-    $(LOCAL_PATH)/ramdisk/init.debug.rc:root/init.debug.rc \
-    $(LOCAL_PATH)/ramdisk/init.diag.rc:root/init.diag.rc \
-    $(LOCAL_PATH)/ramdisk/init.bt.vendor.rc:root/init.bt.vendor.rc \
-    $(LOCAL_PATH)/ramdisk/init.common.rc:root/init.common.rc \
-    $(LOCAL_PATH)/ramdisk/init.gps.rc:root/init.gps.rc \
-    $(LOCAL_PATH)/ramdisk/init.modem.rc:root/init.modem.rc \
-    $(LOCAL_PATH)/ramdisk/init.platform.usb.rc:root/init.platform.usb.rc \
-    $(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
-    $(LOCAL_PATH)/ramdisk/init.redhookbay.rc:root/init.redhookbay.rc \
-    $(LOCAL_PATH)/ramdisk/init.wifi.rc:root/init.wifi.rc \
-    $(LOCAL_PATH)/ramdisk/init.wifi.vendor.rc:root/init.wifi.vendor.rc \
-    $(LOCAL_PATH)/ramdisk/init.wireless.rc:root/init.wireless.rc \
-    $(LOCAL_PATH)/ramdisk/props.board.rc:root/props.board.rc \
-    $(LOCAL_PATH)/ramdisk/props.platform.rc:root/props.platform.rc \
-    $(LOCAL_PATH)/ramdisk/props.rc:root/props.rc \
-    $(LOCAL_PATH)/ramdisk/ueventd.modules.blacklist:root/ueventd.modules.blacklist \
-    $(LOCAL_PATH)/ramdisk/ueventd.redhookbay.rc:root/ueventd.redhookbay.rc
+$(call find-copy-subdir-files,*,$(LOCAL_PATH)/ramdisk/rc,root)
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -127,19 +106,35 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vendor/lib/hw/gralloc.redhookbay.so.1.11.2630400:system/vendor/lib/hw/gralloc.redhookbay.so.1.11.2630400 \
     $(LOCAL_PATH)/vendor/lib/hw/gralloc.redhookbay.so.1:system/vendor/lib/hw/gralloc.redhookbay.so.1
 
-# non-opensource libs
+# non-opensource things
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/vendor/lib/libdrm.so:system/lib/libdrm.so \
-    $(LOCAL_PATH)/vendor/lib/libhwcwidi.so:system/lib/libhwcwidi.so \
-    $(LOCAL_PATH)/vendor/lib/libmultidisplay.so:system/lib/libmultidisplay.so \
-    $(LOCAL_PATH)/vendor/lib/libmultidisplayjni.so:system/lib/libmultidisplayjni.so \
-    $(LOCAL_PATH)/vendor/lib/libsepdrm.so:system/lib/libsepdrm.so \
-    $(LOCAL_PATH)/vendor/lib/libsepdrmjni.so:system/lib/libsepdrmjni.so \
-    $(LOCAL_PATH)/vendor/lib/libwsbm.so:system/lib/libwsbm.so \
-    $(LOCAL_PATH)/vendor/lib/hw/hwcomposer.redhookbay.so:system/lib/hw/hwcomposer.redhookbay.so \
-    $(LOCAL_PATH)/vendor/lib/hw/lights.redhookbay.so:system/lib/hw/lights.redhookbay.so \
-    $(LOCAL_PATH)/vendor/lib/hw/sensors.redhookbay.so:system/lib/hw/sensors.redhookbay.so \
-    $(LOCAL_PATH)/vendor/lib/hw/vibrator.redhookbay.so:system/lib/hw/vibrator.redhookbay.so
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/bin,system/bin) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc,system/etc) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/atomisp,system/etc/atomisp) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/bluetooth,system/etc/bluetooth) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/dhcp6c,system/etc/dhcp6c) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/dhcpcd,system/etc/dhcpcd) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/dhcpcd/dhcpcd-hooks,system/etc/dhcpcd/dhcpcd-hooks) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/firmware,system/etc/firmware) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/firmware/modem,system/etc/firmware/modem) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/parameter-framework,system/etc/parameter-framework) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/parameter-framework/Settings/Audio,system/etc/parameter-framework/Settings/Audio) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/parameter-framework/Settings/Vibrator,system/etc/parameter-framework/Settings/Vibrator) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/parameter-framework/Structure/Audio,system/etc/parameter-framework/Structure/Audio) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/parameter-framework/Structure/Vibrator,system/etc/parameter-framework/Structure/Vibrator) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/ppp,system/etc/ppp) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/rril,system/etc/rril) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/security,system/etc/security) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/security/cacerts,system/etc/security/cacerts) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/security/EPID_certs,system/etc/security/EPID_certs) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/telephony,system/etc/telephony) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/widi,system/etc/widi) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/etc/wifi,system/etc/wifi) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/framework,system/framework) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/lib,system/lib) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/lib/hw,system/lib/hw) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/xbin,system/xbin) \
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/modules/prebuilt/lib/modules,system/lib/modules)
     
 # for external SD card
 PRODUCT_COPY_FILES += \
@@ -152,11 +147,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libhoudini_hook \
     houdini_hook
-
-# media
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/blobs/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/blobs/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/blobs/vold.fstab:system/etc/vold.fstab \
