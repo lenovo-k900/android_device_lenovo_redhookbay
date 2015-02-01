@@ -135,7 +135,14 @@ loglevel 3
 # qtaguid will limit access to specific data based on group memberships.
 #   net_bw_acct grants impersonation of socket owners.
 #   net_bw_stats grants access to other apps' detailed tagged-socket stats.
-    chown root net_bw_acct /proc/net/xt_qtaguid/ctrl
+    chown root net_bw_acc	setprop wifi.interface wlan0
+	setprop ap.interface wlan0
+	insmod /lib/modules/bcmdhd.ko
+	start wlan_prov
+	start driver_loader
+	wpa_supplicant -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
+    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin -puse_p2p_group_interface=1 -d -d
+	wpa_supplicant -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin  -ddt /proc/net/xt_qtaguid/ctrl
     chown root net_bw_stats /proc/net/xt_qtaguid/stats
 
 # Allow everybody to read the xt_qtaguid resource tracking misc dev.
@@ -381,6 +388,14 @@ on boot
     class_start core
     class_start main
 
+	setprop wifi.interface wlan0
+	setprop ap.interface wlan0
+	insmod /lib/modules/bcmdhd.ko
+	start wlan_prov
+	start driver_loader
+	wpa_supplicant -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
+    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin -puse_p2p_group_interface=1 -d -d
+	wpa_supplicant -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin  -dd
 
     setprop system_init.startsurfaceflinger 0
 
