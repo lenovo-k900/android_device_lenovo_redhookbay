@@ -133,8 +133,7 @@ PRODUCT_COPY_FILES += \
         $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/framework,system/framework) \
         $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/lib,system/lib) \
         $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/lib/hw,system/lib/hw) \
-        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/xbin,system/xbin) \
-        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/modules/prebuilt/lib/modules,system/lib/modules)
+        $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor/system/xbin,system/xbin)
     
 # for external SD card
 PRODUCT_COPY_FILES += \
