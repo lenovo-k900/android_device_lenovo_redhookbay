@@ -144,6 +144,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/houdini/system,system)
 
+# Fancy bootanimation :P
+PRODUCT_BOOTANIMATION := device/lenovo/redhookbay/bootanimation.zip
+
+
 PRODUCT_PACKAGES += \
     libhoudini_hook \
     houdini_hook
