@@ -1,0 +1,30 @@
+#!/system/bin/sh
+
+# Usage: monitor_crashenv [-l directory]
+# -l : to list a directory content
+
+/system/bin/mkdir -p /logs/info
+/system/bin/chmod 0770 /logs/info
+/system/bin/chown system.system /logs/info
+if [ -f /logs/reserved ]; then
+    /system/bin/rm /logs/reserved
+fi
+/system/bin/date > /logs/info/infosystem.txt
+/system/bin/df >> /logs/info/infosystem.txt
+/system/bin/du -k /logs >> /logs/info/infosystem.txt
+/system/bin/cat /logs/history_event >> /logs/info/infosystem.txt
+
+# list content of directories crashlogd failed to watch
+while getopts l: OPT; do
+    case "$OPT" in
+    l)
+        DIR=$OPTARG
+        echo "\n=========  list content of directory : $DIR  =========" >> /logs/info/infosystem.txt
+        ls -l $DIR >> /logs/info/infosystem.txt
+        ;;
+    esac
+done
+
+/system/bin/chmod 0660 /logs/info/infosystem.txt
+/system/bin/chown system.log /logs/info/infosystem.txt
+/system/bin/dd if=/dev/zero of=/logs/reserved bs=1024 count=20

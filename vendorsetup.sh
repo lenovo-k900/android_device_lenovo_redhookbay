@@ -1,1 +1,2 @@
-add_lunch_combo cm_redhoobay-eng
+add_lunch_combo full_redhookbay-eng
+add_lunch_combo full_redhookbay-userdebug

@@ -1,0 +1,27 @@
+import init.gps.cpd.rc
+
+on post-fs
+    ## CSR GPS setup
+    ## RESET gpio and UART
+    chmod 0664 /sys/devices/platform/intel_mid_gps/intel_mid_gps/reset
+    chown system system /sys/devices/platform/intel_mid_gps/intel_mid_gps/reset
+
+    ## CSR GSD5t ON/OFF GPIO
+    chmod 0664 /sys/devices/platform/intel_mid_gps/intel_mid_gps/enable
+    chown system system /sys/devices/platform/intel_mid_gps/intel_mid_gps/enable
+
+    ## UART3
+    chmod 0660 /dev/ttyMFD3
+    chown system system /dev/ttyMFD3
+
+    ## UART PM, it is 05.1 for ttyMFD3
+    chmod 0664 /sys/devices/pci0000:00/0000:00:05.1/power/control
+    chown system system /sys/devices/pci0000:00/0000:00:05.1/power/control
+
+    mkdir /data/gps 0770 gps system
+
+service gpscerd /system/bin/gpscerd /data/gps/gps.cer
+    class main
+	user system
+	group system
+	oneshot
