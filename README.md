@@ -1,11 +1,8 @@
-Working in Progress!
+Working in Progress...
 
-Lenovo K900 device tree for AOSP 4.3
+>**Lenovo K900 device tree for AOSP 4.3**
 
-Developers:
-
+*Developers:*
 -Qubex
-
 -XXX-Man
-
 -MaXxXanteR
