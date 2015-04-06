@@ -9,5 +9,4 @@ $(call inherit-product, device/lenovo/redhookbay/device.mk)
 PRODUCT_NAME := full_redhookbay
 PRODUCT_DEVICE := redhookbay
 PRODUCT_MANUFACTURER := Lenovo
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := AOSP on Redhookbay
+PRODUCT_BRAND := K900

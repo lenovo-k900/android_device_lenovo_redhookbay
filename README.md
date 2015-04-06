@@ -1,6 +1,8 @@
-android_device_lenovo_redhookbay
-================================
+Working in Progress!
 
-lenovo k900 wip device tree for AOSP 4.3
-------------------------------------------
+Lenovo K900 device tree for AOSP4.3
 
+Developers:
+-Qubex
+-XXX-Man
+-MaXxXanteR
