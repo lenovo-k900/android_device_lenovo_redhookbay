@@ -1,0 +1,52 @@
+#!/system/xbin/ash
+
+nvm_conformance_status=$(getprop persist.conformance)
+
+if ( [ "$nvm_conformance_status" = "true" ] || ["$nvm_conformance_status" = "1" ] )
+then
+    echo "write conformance values"
+
+    echo -e -r "at@nvm:fix_s4g_lut.tx.tx_config_table[3].tx_max_pwr=384\r\n" > /dev/gsmtty19 &
+    sleep 1
+    echo "write TX power back-off in Band-4"
+
+    echo -e -r "at@nvm:fix_2g_drv.tx_fix.target_gmsk_output_power[2][0]=480\r\n" > /dev/gsmtty19 &
+    sleep 1
+    echo "write TX power back-off in DCS band PCL0"
+
+    echo -e -r "at@nvm:fix_2g_drv.tx_fix.target_gmsk_output_power[2][1]=448\r\n" > /dev/gsmtty19 &
+    sleep 1
+    echo "write TX power back-off in DCS band PCL1"
+
+    echo -e -r "at@nvm:store_nvm_sync(fix_2g_drv)\r\n" > /dev/gsmtty19 &
+    sleep 1
+    echo "save fix_2g_drv"
+
+    echo -e -r "at@nvm:store_nvm_sync(fix_s4g_lut)\r\n" > /dev/gsmtty19 &
+    sleep 1
+    echo "save fix_s4g_lut"
+else
+    echo "write non conformance values"
+
+    echo -e -r "at@nvm:fix_s4g_lut.tx.tx_config_table[3].tx_max_pwr=264\r\n" > /dev/gsmtty19 &
+    sleep 1
+    echo "write TX power back-off in Band-4"
+
+    echo -e -r "at@nvm:fix_2g_drv.tx_fix.target_gmsk_output_power[2][0]=432\r\n" > /dev/gsmtty19 &
+    sleep 1
+    echo "write TX power back-off in DCS band PCL0"
+
+    echo -e -r "at@nvm:fix_2g_drv.tx_fix.target_gmsk_output_power[2][1]=432\r\n" > /dev/gsmtty19 &
+    sleep 1
+    echo "write TX power back-off in DCS band PCL1"
+
+    echo -e -r "at@nvm:store_nvm_sync(fix_2g_drv)\r\n" > /dev/gsmtty19 &
+    sleep 1
+    echo "save fix_2g_drv"
+
+    echo -e -r "at@nvm:store_nvm_sync(fix_s4g_lut)\r\n" > /dev/gsmtty19 &
+    sleep 1
+    echo "save fix_s4g_lut"
+fi
+exit 0
+
