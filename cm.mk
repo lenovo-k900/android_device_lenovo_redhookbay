@@ -13,6 +13,8 @@ PRODUCT_NAME := cm_redhookbay
 
 ## Boot animation
 TARGET_BOOTANIMATION_NAME := vertical-1080x1920
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
  
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := redhookbay

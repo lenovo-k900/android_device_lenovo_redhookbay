@@ -1,19 +1,23 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -pedantic -std=c99 -D_BSD_SOURCE
 
-ifneq ($(RAZRI_IMAGE),)
-	CFLAGS+=-DRAZRI_IMAGE=1
+ifneq ($(LENOVO_IMAGE),)
+	CFLAGS+=-DLENOVO_IMAGE=1
+endif
+
+ifneq ($(DELL_IMAGE),)
+	CFLAGS+=-DDELL_IMAGE=1
 endif
 
 .PHONY: clean
 
-all: pack_intel unpack_intel
+all: pack unpack
 
 clean:
-	rm -f *.o pack_intel unpack_intel pack_intel.exe unpack_intel.exe *~
+	rm -f *.o pack unpack
 
-pack_intel: pack.o
+pack: pack.o
 	$(CC) -o $@ $< $(CFLAGS)
 
-unpack_intel: unpack.o
+unpack: unpack.o
 	$(CC) -o $@ $< $(CFLAGS)

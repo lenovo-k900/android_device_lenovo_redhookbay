@@ -1,0 +1,4 @@
+/dev/block/mmcblk0p8	/system	ext4	ro,noatime                                              	wait
+/dev/block/mmcblk0p7	/logs  	ext4	nosuid,nodev,barrier=1,journal_async_commit,data=ordered	wait
+*/block/sd          	/storage/usbcard	vfat	None	wait,voldmanaged=usbcard:auto                      
+*/block/mmcblk1     	/storage/sdcard_ext	vfat	None	wait,voldmanaged=sdcard_ext:auto                   

@@ -1,0 +1,11 @@
+import init.modem.dlp.rc
+
+# NVM settings for conformance
+service nvm_conformance /system/bin/logwrapper /system/bin/nvm_conformance
+    oneshot
+    user radio
+    disabled
+
+on property:persist.conformance=*
+    start nvm_conformance
+
