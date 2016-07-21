@@ -1,2 +1,2 @@
 add_lunch_combo full_redhookbay-eng
-add_lunch_combo full_redhookbay-userdebug
+add_lunch_combo cm_redhookbay-eng

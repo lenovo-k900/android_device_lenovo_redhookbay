@@ -1,3 +1,7 @@
-persist.sys.usb.config=mass_storage,mtp,adb
+ro.product.locale.language=ru
+ro.product.locale.region=RU
 persist.service.adb.enable=1
 sys.storage.ums_enabled=1
+android:allowMassStorage="true"
+persist.sys.strictmode.visual=0
+persist.sys.strictmode.disable=1
